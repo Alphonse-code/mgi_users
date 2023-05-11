@@ -1,0 +1,13 @@
+
+{{ form_start(form) }}
+    <div class="form-group">
+        {{ form_row(form.nom, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(form.prenom, {'attr': {'class': 'form-control'}}) }}
+    </div>
+     <div class="form-group">
+        {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <button class="btn {{ button_color|default('btn-outline-primary') }}  mt-3">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

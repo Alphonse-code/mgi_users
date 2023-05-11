@@ -20,6 +20,7 @@ class UsersRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Users::class);
     }
+   
 
     public function save(Users $entity, bool $flush = false): void
     {
@@ -38,6 +39,16 @@ class UsersRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    public function check_email($email): ?Users
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.email = :val')
+            ->setParameter('val', $email)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
 
 //    /**
 //     * @return Users[] Returns an array of Users objects

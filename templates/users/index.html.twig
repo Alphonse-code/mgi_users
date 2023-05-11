@@ -1,20 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UsersController!{% endblock %}
+{% block title %}Users index{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+ <div class="container">
+ 
+    <h2 class="text-center mt-5 mb-3">Affichage des utilisateur</h2>
+     
+     <div class="row">
+    <div class="col float-start">
+         <a href="{{ path('app_users_new') }}" class="btn btn-primary ">Nouveau</a>
+    </div>
+    <div class="col float-end">
+        <input type="search" class="form-control-sm">
+    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/User/Desktop/mon_projet_Alphonse/testidweb/project_alphonse/src/Controller/UsersController.php'|file_link(0) }}">src/Controller/UsersController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/User/Desktop/mon_projet_Alphonse/testidweb/project_alphonse/templates/users/index.html.twig'|file_link(0) }}">templates/users/index.html.twig</a></code></li>
-    </ul>
-</div>
+     
+ </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+        <div class="card-body">
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.prenom }}</td>
+                <td>{{ user.email }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </div>
+        </tbody>
+    </table>
+   
+     </div>
+
+    
 {% endblock %}
